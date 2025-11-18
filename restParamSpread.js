@@ -42,3 +42,21 @@ function showName(firstName, lastName, ...titles) {
 }
 
 showName('Julius', 'Caesar', 'Consul', 'Imperator');
+
+//ARGUMENTS variable
+//it is an array-like variable, it's iterable
+function showName2() {
+  console.log(arguments);
+  console.log(arguments.length);
+  console.log(arguments[0]);
+  console.log(arguments[1]);
+
+  // it's iterable
+  for (let arg of arguments) console.log(arg);
+}
+
+// shows: 2, Julius, Caesar
+showName2('Julius', 'Caesar');
+
+// shows: 1, Ilya, undefined (no second argument)
+showName2('Ilya');
