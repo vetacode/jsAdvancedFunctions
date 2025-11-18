@@ -16,4 +16,29 @@ function sumAll(...params) {
 
 console.log(sumAll(1)); // 1
 console.log(sumAll(1, 2)); // 3
-console.log(sumAll(1, 2, 3)); // 6
+console.log(sumAll(1, 2, 3, 4, 5)); // 15
+
+function totalSum(...all) {
+  let sum = 0;
+  for (let num of all) {
+    sum += num;
+  }
+  return sum;
+}
+console.log(totalSum(1, 2, 3, 4, 5)); //15
+
+//THE REST ARRAY
+function showName(firstName, lastName, ...titles) {
+  console.log(firstName);
+  console.log(lastName);
+  console.log(firstName + ' ' + lastName); // Julius Caesar
+
+  // the rest go into titles array
+  // i.e. titles = ["Consul", "Imperator"]
+  console.log(titles);
+  console.log(titles[0]); // Consul
+  console.log(titles[1]); // Imperator
+  console.log(titles.length); // 2
+}
+
+showName('Julius', 'Caesar', 'Consul', 'Imperator');
