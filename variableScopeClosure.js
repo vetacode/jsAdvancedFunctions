@@ -90,3 +90,26 @@ function f2() {
 // 3 functions in array, every one of them links to Lexical Environment
 // from the corresponding f() run
 let arr = [f2(), f2(), f2()];
+
+//Showing Current Value is used
+function makeAdder(x) {
+  return function (y) {
+    return x + y; // x comes from the lexical environment where this function was created
+  };
+}
+
+let add5 = makeAdder(5);
+console.log(add5(3)); // 8  (x = 5 stored in the environment)
+console.log(makeAdder(5)(3)); // 8
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(function () {
+    console.log(i); // 0, 1, 2
+  }, 10);
+}
+
+for (var i = 0; i < 3; i++) {
+  setTimeout(function () {
+    console.log(i); // 3, 3, 3
+  }, 10);
+}
