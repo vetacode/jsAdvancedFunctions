@@ -94,4 +94,4 @@ console.log(Math.max(1, ...arr1, 2, ...arr2, 25)); // 25
 
 //Can MERGED ARRAYS with normal values
 let merged = [0, ...arr1, 2, ...arr2];
-console.log(merged);
+console.log(merged); //combination of number and array merged
