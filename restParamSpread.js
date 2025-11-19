@@ -67,3 +67,17 @@ function f() {
   return showArg();
 }
 console.log(f(1)); // 1
+
+//SPREAD SYNTAX
+console.log(Math.max(3, 5, 1, 7)); //7
+
+//to do the reverse we cannot do:
+let num = 3;
+5;
+1;
+7;
+console.log(Math.max(num)); //3
+
+//to do the reverse we can do with spread
+let arr = [3, 5, 1, 7];
+console.log(Math.max(...arr)); //7
