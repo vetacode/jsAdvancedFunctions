@@ -5,7 +5,6 @@ function sum(a, b) {
 console.log(sum(1, 2, 3, 4, 5)); //only first 2 arguments will passed to function parameters, the rest will be ignored
 
 //Solution: REST PARAMETERS '...'
-
 function sumAll(...params) {
   let sum = 0;
   for (let arg of params) {
@@ -70,7 +69,6 @@ console.log(f(1)); // 1
 
 //SPREAD SYNTAX
 //It converts array into a list of arguments
-
 //EXAMPLE
 console.log(Math.max(3, 5, 1, 7)); //7
 //to do the arguments passing we cannot do:
@@ -118,7 +116,7 @@ Array.from operates on both array-likes and iterables.
 The spread syntax works only with iterables.
  */
 
-//COPY an ARRAY
+//SPREAD can COPY an ARRAY
 //methods
 let fruits = ['banana', 'mango', 'orange'];
 let promo = ['melon'];
