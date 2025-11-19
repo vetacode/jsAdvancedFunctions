@@ -96,7 +96,7 @@ console.log(Math.max(1, ...arr1, 2, ...arr2, 25)); // 25
 let merged = [0, ...arr1, 2, ...arr2];
 console.log(merged); //combination of number and array merged
 
-//Can Convert Iterables too
+//Can Convert ITERABLES too
 //Convert String into arr of characters
 let str = 'Master';
 console.log([...str]); //[ 'M', 'a', 's', 't', 'e', 'r' ]
@@ -106,3 +106,14 @@ console.log(str.length);
 console.log([...str].length);
 console.log(typeof [...str]);
 // console.log(typeof (...str)); //invalid syntax
+
+//Alternatives convert iterable strings into Array using ARRAY.FROM
+//the results is same as [...str]
+let hello = 'Hai';
+console.log(Array.from(hello));
+
+/**
+ * But for Object: There is difference between Array.from(obj) and [...obj]:
+Array.from operates on both array-likes and iterables.
+The spread syntax works only with iterables.
+ */
