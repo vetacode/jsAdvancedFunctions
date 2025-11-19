@@ -119,6 +119,23 @@ The spread syntax works only with iterables.
  */
 
 //COPY an ARRAY
+//methods
+let fruits = ['banana', 'mango', 'orange'];
+let promo = ['melon'];
+let free = ['salak'];
+
+console.log(fruits.slice()); //cloning
+console.log([...fruits] == fruits);
+
+let concat = fruits.concat(promo, free);
+console.log(concat);
+let copyMerged = [...fruits, ...promo, ...free];
+console.log(copyMerged);
+//ARRAY Always be compared by reference, thus it will always false
+console.log(concat == copyMerged); //false
+//COMPARE ARRAY BY VALUE
+console.log(JSON.stringify(concat) == JSON.stringify(copyMerged)); //true
+
 let arrNum = [1, 2, 3];
 
 let arrCopy = [...arrNum]; // spread the array into a list of parameters
