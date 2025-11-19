@@ -46,3 +46,12 @@ let counter = makeCounter();
 console.log(counter()); // 0
 console.log(counter()); // 1
 console.log(counter()); // 2
+
+/**LEXICAL ENVIRONMENT
+ * is the internal (hidden) accociated Object, a specification object (theoritically)
+ * steps:
+ * 1. varibale is a value, which are the properties of internal special object. start with uninitialized
+ * 2. function declaration is also a value, which instantly fully initialized
+ * 3. Innner and outer lexical environment
+ * 4. returning a function
+ */
