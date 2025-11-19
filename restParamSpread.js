@@ -117,3 +117,22 @@ console.log(Array.from(hello));
 Array.from operates on both array-likes and iterables.
 The spread syntax works only with iterables.
  */
+
+//COPY an ARRAY
+let arrNum = [1, 2, 3];
+
+let arrCopy = [...arrNum]; // spread the array into a list of parameters
+// then put the result into a new array
+
+// do the arrays have the same contents?
+console.log(JSON.stringify(arrNum) === JSON.stringify(arrCopy)); // true
+
+// are the arrays equal?
+console.log(arrNum === arrCopy); // false (not same reference)
+
+// modifying our initial array does not modify the copy:
+arrNum.push(4);
+console.log(arrNum); // 1, 2, 3, 4
+console.log(arrCopy); // 1, 2, 3
+arrCopy.push(4);
+console.log(arrCopy); // 1, 2, 3, 4
