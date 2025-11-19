@@ -99,5 +99,10 @@ console.log(merged); //combination of number and array merged
 //Can Convert Iterables too
 //Convert String into arr of characters
 let str = 'Master';
-console.log([str]);
-console.log([...str]);
+console.log([...str]); //[ 'M', 'a', 's', 't', 'e', 'r' ]
+console.log(...str); //M a s t e r
+console.log([str]); //[ 'Master' ]
+console.log(str.length);
+console.log([...str].length);
+console.log(typeof [...str]);
+// console.log(typeof (...str)); //invalid syntax
