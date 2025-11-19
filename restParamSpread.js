@@ -44,7 +44,7 @@ function showName(firstName, lastName, ...titles) {
 showName('Julius', 'Caesar', 'Consul', 'Imperator');
 
 //ARGUMENTS variable
-//it is an array-like variable, it's iterable
+//it is an array-like variable, it's iterable. But cannot use array method i.e. arguments.map(...)
 function showName2() {
   console.log(arguments);
   console.log(arguments.length);
@@ -60,3 +60,10 @@ showName2('Julius', 'Caesar');
 
 // shows: 1, Ilya, undefined (no second argument)
 showName2('Ilya');
+
+//ARROW FUNCTION Dont have 'arguments' object, neither 'this'.
+function f() {
+  let showArg = () => arguments[0];
+  return showArg();
+}
+console.log(f(1)); // 1
