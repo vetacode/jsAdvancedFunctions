@@ -69,15 +69,20 @@ function f() {
 console.log(f(1)); // 1
 
 //SPREAD SYNTAX
-console.log(Math.max(3, 5, 1, 7)); //7
+//It converts array into a list of arguments
 
-//to do the reverse we cannot do:
+//EXAMPLE
+console.log(Math.max(3, 5, 1, 7)); //7
+//to do the arguments passing we cannot do:
 let num = 3;
 5;
 1;
 7;
 console.log(Math.max(num)); //3
+//OR
+let numArr = [3, 5, 1, 7];
+console.log(Math.max(numArr)); //NaN
 
-//to do the reverse we can do with spread
+//USE SPREAD to do the arguments passing
 let arr = [3, 5, 1, 7];
 console.log(Math.max(...arr)); //7
