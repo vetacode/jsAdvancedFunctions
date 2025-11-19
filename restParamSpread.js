@@ -86,3 +86,12 @@ console.log(Math.max(numArr)); //NaN
 //USE SPREAD to do the arguments passing
 let arr = [3, 5, 1, 7];
 console.log(Math.max(...arr)); //7
+
+//Can combined with normal values
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+console.log(Math.max(1, ...arr1, 2, ...arr2, 25)); // 25
+
+//Can MERGED ARRAYS with normal values
+let merged = [0, ...arr1, 2, ...arr2];
+console.log(merged);
