@@ -63,15 +63,21 @@ console.log(counter()); // 2
 
 //GARBAGE COLLECTION
 function f() {
-  let value = 123;
+  let value = 0;
 
   return function () {
-    console.log(value);
+    return (value += 1);
   };
 }
 
 let g = f(); // g.[[Environment]] stores a reference to the Lexical Environment
 // of the corresponding f() call
+let h = f();
+console.log(g()); // 1
+console.log(g()); // 2
+console.log(h()); // 1 ==> its different lexical environment, starting from scratch
+console.log(g()); // 3
+console.log(h()); // 2 ==> continue
 
 function f2() {
   let value = Math.random();
