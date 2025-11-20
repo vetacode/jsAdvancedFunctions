@@ -89,5 +89,49 @@ let sayHi2 = function (who) {
 let sayHi3 = function func(who) {
   console.log(`Hello, ${who}`); //Hello, Doni
 };
-
 sayHi3('Doni');
+
+/**Special thing about the name func
+ * 1. It allows the function to reference itself internally.
+ * 2. It is not visible outside of the function.
+ */
+
+let sayHi4 = function func(who) {
+  if (who) {
+    console.log(`Hello, ${who}`);
+  } else {
+    func('Guest'); // use func to re-call itself
+  }
+};
+
+sayHi4(); // Hello, Guest
+
+// But this won't work:
+// func(); // Error, func is not defined (not visible outside of the function)
+
+let sayHi5 = function (who) {
+  if (who) {
+    console.log(`Hello, ${who}`);
+  } else {
+    sayHi5('Guest'); // Error: sayHi is not a function
+  }
+};
+
+let welcome = sayHi5;
+sayHi5 = null;
+
+// welcome(); // Error, the nested sayHi call doesn't work any more!
+
+//Solution: use internal function name: func
+let sayHi6 = function func(who) {
+  if (who) {
+    console.log(`Hello, ${who}`);
+  } else {
+    func('Guest'); // Now all fine
+  }
+};
+
+let welcome2 = sayHi6;
+sayHi6 = null;
+
+welcome2(); // Hello, Guest (nested call works)
