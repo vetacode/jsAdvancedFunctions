@@ -107,14 +107,14 @@ console.log(makeAdder(5)(3)); // 8
 
 for (let i = 0; i < 3; i++) {
   setTimeout(function () {
-    console.log(i); // 0, 1, 2
+    // console.log(i); // 0, 1, 2
   }, 10);
 }
 
 for (var i = 0; i < 3; i++) {
   //var will only use the last variable created
   setTimeout(function () {
-    console.log(i); // 3, 3, 3
+    // console.log(i); // 3, 3, 3
   }, 10);
 }
 
@@ -435,3 +435,56 @@ let arr2 = [1, 2, 3, 4, 5, 6, 7];
 
 console.log(arr2.filter(inBetween(3, 6))); // 3,4,5,6
 console.log(arr2.filter(inArray([1, 2, 10]))); // 1,2
+
+/**TASK 9
+ * Sort by field
+importance: 5
+We’ve got an array of objects to sort:
+
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" }
+];
+The usual way to do that would be:
+
+// by name (Ann, John, Pete)
+users.sort((a, b) => a.name > b.name ? 1 : -1);
+
+// by age (Pete, Ann, John)
+users.sort((a, b) => a.age > b.age ? 1 : -1);
+Can we make it even less verbose, like this?
+
+users.sort(byField('name'));
+users.sort(byField('age'));
+So, instead of writing a function, just put byField(fieldName).
+
+Write the function byField that can be used for that.
+ */
+let users = [
+  { name: 'John', age: 20, surname: 'Johnson' },
+  { name: 'Pete', age: 18, surname: 'Peterson' },
+  { name: 'Ann', age: 19, surname: 'Hathaway' },
+];
+
+//Usual way to sort
+// by name (Ann, John, Pete)
+console.log(users.sort((a, b) => (a.name > b.name ? 1 : -1)));
+// by age (Pete, Ann, John)
+console.log(users.sort((a, b) => (a.age > b.age ? 1 : -1)));
+
+function byField(field) {
+  return function (a, b) {
+    return a[field] > b[field] ? 1 : -1;
+  };
+}
+
+console.log(users.sort(byField('name')));
+console.log(users.sort(byField('age')));
+
+//OR using arrow function
+function byField2(field) {
+  return (a, b) => (a[field] > b[field] ? 1 : -1);
+}
+console.log(users.sort(byField2('name')));
+console.log(users.sort(byField2('age')));
