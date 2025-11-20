@@ -198,14 +198,14 @@ function sum(a) {
     return f;
   }
 
-  f[Symbol.toPrimitive] = function () {
+  f.toString = function () {
     return currentSum;
   };
   return f;
 }
-let y = sum(1)(2);
+let y = +sum(1)(2);
 let x = sum(1)(2)(3);
-console.log(+y); // 3; // 1 + 2
+console.log(y); // 3; // 1 + 2
 console.log(Number(x)); // 6; // 1 + 2 + 3
 console.log(+sum(5)(-1)(2)); // 6
 console.log(+sum(6)(-1)(-2)(-3)); // 0
