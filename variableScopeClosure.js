@@ -345,3 +345,26 @@ if (true) {
   }
 }
 sayHi(); //this call is cannot reach inside if{} codeblock, coz thats not a function
+
+/**TASK 6
+ * Sum with closures
+importance: 4
+Write function sum that works like this: sum(a)(b) = a+b.
+
+Yes, exactly this way, using double parentheses (not a mistype).
+
+For instance:
+
+sum(1)(2) = 3
+sum(5)(-1) = 4
+ */
+
+function sum(x) {
+  let a = x;
+  return function (y) {
+    return a + y;
+  };
+}
+
+console.log(sum(1)(2)); // 3
+console.log(sum(5)(-1)); // 4
