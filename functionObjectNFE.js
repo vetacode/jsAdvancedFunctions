@@ -176,3 +176,37 @@ console.log(counter3.decrease());
 console.log(counter3.decrease());
 console.log(counter3.decrease());
 console.log(counter3.set(10));
+
+/**TASK 2
+ * Sum with an arbitrary amount of brackets
+importance: 2
+Write function sum that would work like this:
+
+sum(1)(2) == 3; // 1 + 2
+sum(1)(2)(3) == 6; // 1 + 2 + 3
+sum(5)(-1)(2) == 6
+sum(6)(-1)(-2)(-3) == 0
+sum(0)(1)(2)(3)(4)(5) == 15
+P.S. Hint: you may need to setup custom object to primitive conversion for your function.
+ */
+
+function sum(a) {
+  let currentSum = a;
+
+  function f(b) {
+    currentSum += b;
+    return f;
+  }
+
+  f[Symbol.toPrimitive] = function () {
+    return currentSum;
+  };
+  return f;
+}
+let y = sum(1)(2);
+let x = sum(1)(2)(3);
+console.log(+y); // 3; // 1 + 2
+console.log(Number(x)); // 6; // 1 + 2 + 3
+console.log(+sum(5)(-1)(2)); // 6
+console.log(+sum(6)(-1)(-2)(-3)); // 0
+console.log(+sum(0)(1)(2)(3)(4)(5)); // 15
