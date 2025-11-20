@@ -272,3 +272,45 @@ console.log(counter1()); // 1
 
 console.log(counter2()); // ?
 console.log(counter2()); // ?
+
+/**TASK 4
+ * Counter object
+importance: 5
+Here a counter object is made with the help of the constructor function.
+
+Will it work? What will it show?
+
+function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // ?
+alert( counter.up() ); // ?
+alert( counter.down() ); // ?
+ */
+
+function Counter() {
+  let count = 0;
+
+  this.up = function () {
+    return ++count;
+  };
+  this.down = function () {
+    return --count;
+  };
+}
+
+let counter3 = new Counter();
+
+console.log(counter3.up()); // 1
+console.log(counter3.up()); // 2
+console.log(counter3.down()); // 1
