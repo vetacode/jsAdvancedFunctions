@@ -67,6 +67,7 @@ function f() {
 
   return function () {
     return (value += 1);
+    // return ++value //same as this
   };
 }
 
