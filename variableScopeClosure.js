@@ -359,12 +359,39 @@ sum(1)(2) = 3
 sum(5)(-1) = 4
  */
 
-function sum(x) {
-  let a = x;
-  return function (y) {
-    return a + y;
+function sum(a) {
+  return function (b) {
+    return a + b;
   };
 }
 
 console.log(sum(1)(2)); // 3
 console.log(sum(5)(-1)); // 4
+
+/**TASK 7
+ * Is variable visible?
+importance: 4
+What will be the result of this code?
+
+let x = 1;
+
+function func() {
+  console.log(x); // ?
+
+  let x = 2;
+}
+
+func();
+P.S. There’s a pitfall in this task. The solution is not obvious.
+ */
+
+let x = 1;
+
+function func() {
+  console.log(x); // cannot access x before initialization
+
+  //THE DEAD ZONES: temporary unusability of a variable (from start of code block { until let)
+  let x = 2;
+}
+
+func();
