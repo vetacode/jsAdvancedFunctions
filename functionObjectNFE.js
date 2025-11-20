@@ -2,7 +2,6 @@
 function sayHi() {
   alert('Hi');
 }
-
 alert(sayHi.name); // sayHi
 
 function f(sayHi = function () {}) {
@@ -20,6 +19,5 @@ let user = {
     // ...
   },
 };
-
 alert(user.sayHi.name); // sayHi
 alert(user.sayBye.name); // sayBye
