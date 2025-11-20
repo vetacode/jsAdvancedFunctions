@@ -1,3 +1,5 @@
+'use strict';
+
 //CODE BLOCKS
 {
   let say = 'Hello';
@@ -314,3 +316,32 @@ let counter3 = new Counter();
 console.log(counter3.up()); // 1
 console.log(counter3.up()); // 2
 console.log(counter3.down()); // 1
+
+/**TASK 5
+ * Function in if
+importance: 5
+Look at the code. What will be the result of the call at the last line?
+
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  function sayHi() {
+    alert(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();
+ */
+
+let phrase = 'Hello';
+if (true) {
+  let user = 'John';
+
+  function sayHi() {
+    //error sayHi() value is not used
+    console.log(`${phrase}, ${user}`);
+  }
+}
+sayHi(); //this call is cannot reach inside if{} codeblock, coz thats not a function
