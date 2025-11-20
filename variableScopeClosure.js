@@ -135,8 +135,11 @@ function noClosure() {
   return data;
 }
 
-noClosure();
+console.log(noClosure());
+console.log(noClosure());
+console.log(noClosure());
 // let no = noClosure();
+
 // console.log(no()); //no is not a function
 // console.log(no);
 // console.log(no);
@@ -155,3 +158,6 @@ console.log(withClosure());
 let wit = withClosure();
 console.log(wit());
 console.log(wit());
+
+wit = null; //GC working to erase withClosure() function
+// console.log(wit()); //wit is not a function
