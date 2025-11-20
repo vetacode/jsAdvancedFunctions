@@ -549,3 +549,23 @@ army[1](); // 10 from the shooter number 1
 army[2](); // 10 ...and so on.
 army[7](); // 10 ...and so on.
 army[10](); // 10 ...and so on.
+
+//Best solution is use for.. loop
+function makeArmy2() {
+  let shooters = [];
+
+  for (let i = 0; i < 10; i++) {
+    let shooter = function () {
+      // shooter function
+      console.log(i); // should show its number
+    };
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+let army2 = makeArmy2();
+
+army2[0](); // 0
+army2[5](); // 5
