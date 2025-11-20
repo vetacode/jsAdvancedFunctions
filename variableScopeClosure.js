@@ -128,12 +128,30 @@ function decorator(fn) {
 
 console.log(decorator(sum)(1, 3));
 
+//NO CLOSURE
 function noClosure() {
   let data = { name: 'Andi' };
   console.log('inner log:', data);
   return data;
 }
 
-console.log(noClosure());
-let no = noClosure();
-console.log(no());
+noClosure();
+// let no = noClosure();
+// console.log(no()); //no is not a function
+// console.log(no);
+// console.log(no);
+
+//WITH CLOSURE
+function withClosure() {
+  let data = { name: 'Andi' };
+  console.log('inner log:', data);
+  return function fn() {
+    console.log(data);
+    return data;
+  };
+}
+
+console.log(withClosure());
+let wit = withClosure();
+console.log(wit());
+console.log(wit());
