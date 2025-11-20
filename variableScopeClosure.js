@@ -115,3 +115,15 @@ for (var i = 0; i < 3; i++) {
     console.log(i); // 3, 3, 3
   }, 10);
 }
+
+function sum(a, b) {
+  return a + b;
+}
+
+function decorator(fn) {
+  return function (a, b) {
+    return 'hasilnya adalah: ' + fn(a, b);
+  };
+}
+
+console.log(decorator(sum)(1, 3));
