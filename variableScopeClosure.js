@@ -110,6 +110,7 @@ for (let i = 0; i < 3; i++) {
 }
 
 for (var i = 0; i < 3; i++) {
+  //var will only use the last variable created
   setTimeout(function () {
     console.log(i); // 3, 3, 3
   }, 10);
