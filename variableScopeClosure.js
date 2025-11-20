@@ -36,16 +36,16 @@ sayHiBye('Steve', 'Jonan');
 function makeCounter() {
   let count = 0;
 
-  return function () {
-    return count++;
+  return function (a) {
+    return (count += a);
   };
 }
 
 let counter = makeCounter();
 
-console.log(counter()); // 0
-console.log(counter()); // 1
-console.log(counter()); // 2
+console.log(counter(0)); // 0
+console.log(counter(2)); // 2
+console.log(counter(3)); // 5
 
 /**LEXICAL ENVIRONMENT
  * is the internal (hidden) accociated Object, a specification object (theoritically)
@@ -127,3 +127,13 @@ function decorator(fn) {
 }
 
 console.log(decorator(sum)(1, 3));
+
+function noClosure() {
+  let data = { name: 'Andi' };
+  console.log('inner log:', data);
+  return data;
+}
+
+console.log(noClosure());
+let no = noClosure();
+console.log(no());
