@@ -31,7 +31,7 @@ function sayHi() {
   console.log(phrase); // works
 }
 sayHi();
-console.log(phrase); // ReferenceError: phrase is not defined
+// console.log(phrase); // ReferenceError: phrase is not defined
 
 //“var” tolerates redeclarations
 let user;
