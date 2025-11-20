@@ -229,3 +229,46 @@ let work = makeWorker();
 
 // call it
 work(); // what will it show?
+
+/**TASK 3
+ * Are counters independent?
+importance: 5
+Here we make two counters: counter and counter2 using the same makeCounter function.
+
+Are they independent? YES
+What is the second counter going to show? 0,1 or 2,3 or something else? 0, 1
+
+function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+let counter2 = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+
+alert( counter2() ); // ?
+alert( counter2() ); // ?
+ */
+
+function makeCounter() {
+  let count = 0;
+
+  return function () {
+    return count++;
+  };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log(counter1()); // 0
+console.log(counter1()); // 1
+
+console.log(counter2()); // ?
+console.log(counter2()); // ?
