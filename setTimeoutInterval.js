@@ -28,5 +28,6 @@ setTimeout(() => {
 let cobaClear = setTimeout(() => {
   console.log('Halooo');
 }, 1000);
-
+console.log(cobaClear);
 clearTimeout(cobaClear); //timer stop, log ga keluar
+console.log(cobaClear);
