@@ -7,3 +7,12 @@ console.log(sum(1, 2)); // 3
 
 let sayHi = new Function('console.log("Hello")');
 sayHi(); // Hello (muncul di node.js)
+
+//new Function allows to turn any string into a function. For example, we can receive a new function from a server and then execute it:
+// let str = ... receive the code from a server dynamically ...
+
+let str = '"Joel"';
+
+let func = new Function(`console.log(${str})`);
+func(); //Joel
+// console.log(func());
