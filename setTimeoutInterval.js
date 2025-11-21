@@ -2,7 +2,7 @@
 //Syntax: let timerId = setTimeout(func|code, [delay], [arg1], [arg2], ...)
 
 function hello() {
-  console.log('Hai');
+  // console.log('Hai');
   return 'Hai!!';
 }
 let setHello = setTimeout(hello, 2000);
@@ -14,13 +14,13 @@ function sayHi(name, sureName, kabar) {
 
 let sapa = setTimeout(sayHi, 2000, 'Justin', 'Bibir', 'Apo Kabare?');
 setTimeout(() => {
-  console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
+  // console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
 }, 2000);
 
-console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
+// console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
 
 setTimeout(() => {
-  console.log(hello());
+  // console.log(hello());
 }, 1000);
 
 //CLEAR TIMEOUT
@@ -28,17 +28,30 @@ setTimeout(() => {
 let cobaClear = setTimeout(() => {
   console.log('Halooo');
 }, 1000);
-console.log(cobaClear);
+// console.log(cobaClear);
 clearTimeout(cobaClear); //timer stop, log ga keluar
-console.log(cobaClear);
+// console.log(cobaClear);
 
 //SET INTERVAL
 //Syntax: let timerId = setInterval(func|code, [delay], [arg1], [arg2], ...)
 // repeat with the interval of 2 seconds
-let timerId = setInterval(() => console.log('tick'), 1000);
+let timerId = setInterval(() => {
+  // console.log('tick');
+}, 1000);
 
 // after 5 seconds stop
 setTimeout(() => {
-  clearInterval(timerId);
-  console.log('stop');
+  // clearInterval(timerId);
+  // console.log('stop');
 }, 5000);
+
+//NESTED TIMEOUT
+let nested = setTimeout(function click() {
+  console.log('click');
+  nested = setTimeout(click, 1000);
+}, 5000);
+
+setTimeout(() => {
+  console.log('STOP');
+  clearTimeout(nested);
+}, 10000);
