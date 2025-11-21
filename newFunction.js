@@ -48,8 +48,21 @@ function getFunc2() {
 }
 */
 
+let serverResponseText = `{
+  "rule": "return user.age >= 18 && user.salary > 3000000;"
+}`;
+
+let response = JSON.parse(serverResponseText);
+
 let ruleFunction = new Function('user', response.rule);
 
 let isValid = ruleFunction({ age: 20, salary: 5000000 });
 
 console.log(isValid);
+
+/**
+ * NOTES: JSON wajib:
+properti wajib double quote
+tidak boleh ada koma terakhir (trailing comma)
+tidak boleh ada komentar
+*/
