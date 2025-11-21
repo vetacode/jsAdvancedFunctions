@@ -93,3 +93,23 @@ function printNumbers(from, to) {
   }, 1000);
 }
 printNumbers(0, 5);
+
+function printNumbersTimeout(from, to) {
+  let current = from;
+
+  let nestedTimeout = setTimeout(function add() {
+    console.log(current);
+    nestedTimeout = setTimeout(add, 1000);
+
+    if (current == to) {
+      clearTimeout(nestedTimeout);
+    }
+    current++;
+  }, 1000);
+}
+
+printNumbersTimeout(6, 11);
+
+/**
+ *
+ */
