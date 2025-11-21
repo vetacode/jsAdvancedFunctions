@@ -46,12 +46,26 @@ setTimeout(() => {
 }, 5000);
 
 //NESTED TIMEOUT
-let nested = setTimeout(function click() {
-  console.log('click');
-  nested = setTimeout(click, 1000);
-}, 5000);
+// let nested = setTimeout(function click() {
+//   console.log('click');
+//   nested = setTimeout(click, 1000);
+// }, 5000);
 
-setTimeout(() => {
-  console.log('STOP');
-  clearTimeout(nested);
-}, 10000);
+// setTimeout(() => {
+//   console.log('STOP');
+//   clearTimeout(nested);
+// }, 10000);
+
+//Comparing setInterval vs nested setTimeout
+// setInterval(function () {
+//   for (let i = 0; i <= 5; i++) {
+//     console.log(i);
+//   }
+// }, 1000);
+
+let nestedInterval = setTimeout(function interval() {
+  for (let i = 0; i <= 5; i++) {
+    console.log(i);
+  }
+  nestedInterval = setTimeout(interval, 3000);
+}, 1000);
