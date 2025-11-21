@@ -63,9 +63,33 @@ setTimeout(() => {
 //   }
 // }, 1000);
 
-let nestedInterval = setTimeout(function interval() {
-  for (let i = 0; i <= 5; i++) {
-    console.log(i);
-  }
-  nestedInterval = setTimeout(interval, 3000);
-}, 1000);
+// let nestedInterval = setTimeout(function interval() {
+//   for (let i = 0; i <= 5; i++) {
+//     console.log(i);
+//   }
+//   nestedInterval = setTimeout(interval, 3000);
+// }, 1000);
+
+/**TASK 1
+ * Output every second
+importance: 5
+Write a function printNumbers(from, to) that outputs a number every second, starting from from and ending with to.
+
+Make two variants of the solution.
+
+Using setInterval.
+Using nested setTimeout.
+
+ */
+
+function printNumbers(from, to) {
+  let current = from;
+  let timerId = setInterval(() => {
+    console.log(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }, 1000);
+}
+printNumbers(0, 5);
