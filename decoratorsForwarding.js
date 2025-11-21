@@ -20,4 +20,8 @@ function cachingDecorator(func) {
 }
 
 slow = cachingDecorator(slow);
-console.log(slow(1));
+console.log('data from cache:', slow(1));
+console.log('data from cache:', slow(2));
+console.log('data from cache:', slow(2));
+console.log('data from cache:', slow(2));
+console.log('data from cache:', slow(1));
