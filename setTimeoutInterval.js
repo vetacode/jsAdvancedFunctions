@@ -18,4 +18,7 @@ setTimeout(() => {
 }, 2000);
 
 console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
-console.log(sapa);
+
+setTimeout(() => {
+  console.log(hello());
+}, 1000);
