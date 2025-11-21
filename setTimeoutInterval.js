@@ -92,7 +92,7 @@ function printNumbers(from, to) {
     current++;
   }, 1000);
 }
-printNumbers(0, 5);
+// printNumbers(0, 5);
 
 function printNumbersTimeout(from, to) {
   let current = from;
@@ -108,8 +108,48 @@ function printNumbersTimeout(from, to) {
   }, 1000);
 }
 
-printNumbersTimeout(6, 11);
+// printNumbersTimeout(6, 11);
 
-/**
- *
+/**TASK 2
+ *What will setTimeout show?
+importance: 5
+In the code below there’s a setTimeout call scheduled, then a heavy calculation is run, that takes more than 100ms to finish.
+
+When will the scheduled function run?
+
+After the loop.
+Before the loop.
+In the beginning of the loop.
+What is alert going to show?
+
+let i = 0;
+
+setTimeout(() => alert(i), 100); // ?
+
+// assume that the time to execute this function is >100ms
+for(let j = 0; j < 100000000; j++) {
+  i++;
+}
  */
+
+let i = 0;
+
+setTimeout(() => console.log(i), 100); // 100000000 after loop finished
+
+// assume that the time to execute this function is >100ms
+for (let j = 0; j < 100000000; j++) {
+  i++;
+}
+//Any setTimeout will run only after the current code has finished.
+
+// let i = 0;
+// for (i = 0; i < 5; i++) {
+//   //menggunakan outer i
+// }
+// console.log(i); // sehingga outer i berubah, i akhir adalah 5
+
+// let i = 0;
+// for (let i = 0; i < 5; i++) {
+//   //menggunakan inner i
+// }
+// console.log(i); // sehingga outer i tidak berubah, masih tetap 0
