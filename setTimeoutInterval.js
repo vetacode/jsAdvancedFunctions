@@ -22,3 +22,11 @@ console.log(sayHi('Justin', 'Bibir', 'Apo Kabare?'));
 setTimeout(() => {
   console.log(hello());
 }, 1000);
+
+//CLEAR TIMEOUT
+//cancelling setTimeout
+let cobaClear = setTimeout(() => {
+  console.log('Halooo');
+}, 1000);
+
+clearTimeout(cobaClear); //timer stop, log ga keluar
