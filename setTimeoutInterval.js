@@ -31,3 +31,14 @@ let cobaClear = setTimeout(() => {
 console.log(cobaClear);
 clearTimeout(cobaClear); //timer stop, log ga keluar
 console.log(cobaClear);
+
+//SET INTERVAL
+//Syntax: let timerId = setInterval(func|code, [delay], [arg1], [arg2], ...)
+// repeat with the interval of 2 seconds
+let timerId = setInterval(() => console.log('tick'), 1000);
+
+// after 5 seconds stop
+setTimeout(() => {
+  clearInterval(timerId);
+  console.log('stop');
+}, 5000);
