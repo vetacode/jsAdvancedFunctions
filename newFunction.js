@@ -1,8 +1,10 @@
 'use strict';
 
+//NEW FUNCTION adalah cara membuat function dari string
 //The "new Function" syntax: let func = new Function ([arg1, arg2, ...argN], functionBody);
 
-let sum = new Function('a', 'b', 'return a + b');
+let sum = new Function('a', 'b', 'return a + b'); //function body berupa text string bukan code yg langsung kita buat, contohnya adalah data dari server
+
 console.log(sum(1, 2)); // 3
 
 let sayHi = new Function('console.log("Hello")');
