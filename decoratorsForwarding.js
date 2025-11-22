@@ -43,12 +43,12 @@ function decoratorCache(func) {
       return cache.get(x); //Jika fungsi if ini true, maka akan lgsg return (dan exit) argumen x yg udah disimpan di cache sebelumnya, sehingga fungsi else (fungsi setelah ini) tidak akan dijalankan
     }
 
-    // let result = func(x);
+    let result = func(x);
     // console.log(result);
-    cache.set(x, func(x));
+    cache.set(x, result);
     // console.log(x);
     // console.log(result);
-    return func(x);
+    return result;
   };
 }
 
