@@ -176,18 +176,18 @@ function hash(args) {
 }
 
 worker3.slow = cacheMultiArgs(worker3.slow, hash);
-console.log(worker3.slow(4, 6));
-console.log(worker3.slow(4, 6));
-console.log(worker3.slow(4, 6));
-console.log(worker3.slow(4, 6));
-console.log(worker3.slow(2, 3));
-console.log(worker3.slow(2, 3));
+// console.log(worker3.slow(4, 6));
+// console.log(worker3.slow(4, 6));
+// console.log(worker3.slow(4, 6));
+// console.log(worker3.slow(4, 6));
+// console.log(worker3.slow(2, 3));
+// console.log(worker3.slow(2, 3));
 
 //BORROWING METHOD
 function hash2() {
   console.log([].join.call(arguments)); // 1, 2
 }
-hash2(1, 2);
+// hash2(1, 2);
 
 /**TASK 1
  * Spy decorator
@@ -231,5 +231,44 @@ function spy(func) {
 
 work = spy(work);
 
-console.log(work(1, 2)); // 3
-console.log(work(4, 5)); // 9
+// console.log(work(1, 2)); // 3
+// console.log(work(4, 5)); // 9
+
+/**TASK 2
+ * Delaying decorator
+importance: 5
+Create a decorator delay(f, ms) that delays each call of f by ms milliseconds.
+
+For instance:
+
+function f(x) {
+  alert(x);
+}
+
+// create wrappers
+let f1000 = delay(f, 1000);
+let f1500 = delay(f, 1500);
+
+f1000("test"); // shows "test" after 1000ms
+f1500("test"); // shows "test" after 1500ms
+In other words, delay(f, ms) returns a “delayed by ms” variant of f.
+
+In the code above, f is a function of a single argument, but your solution should pass all arguments and the context this.
+ */
+
+function f(x) {
+  console.log(x);
+  return x;
+}
+
+function delay(f, ms) {
+  return function () {
+    setTimeout(() => f.apply(this, arguments), ms);
+  };
+}
+
+let f1000 = delay(f, 1000);
+let f1500 = delay(f, 1500);
+
+f1000('test'); // shows "test" after 1000ms
+f1500('test'); // shows "test" after 1500ms
