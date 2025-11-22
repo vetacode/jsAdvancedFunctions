@@ -122,7 +122,7 @@ function cacheMultiArgs(func, hash) {
       return cache.get(key);
     }
 
-    let result = func(this, ...arguments);
+    let result = func.call(this, ...arguments);
     cache.set(key, result);
     return result;
   };
@@ -133,4 +133,6 @@ function hash(args) {
 }
 
 worker2.slow = cacheMultiArgs(worker2.slow, hash);
+console.log(worker2.slow(2, 3));
+console.log(worker2.slow(2, 3));
 console.log(worker2.slow(2, 3));
