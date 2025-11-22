@@ -62,6 +62,7 @@ slow = decoratorCache(slow);
 // console.log(slow(3));
 
 //Using “FUNC.CALL” for the context
+//This expects a list of arguments
 //This is i.e. for working with Object Methods
 //Syntax: func.call(context, arg1, arg2, …args)
 
@@ -100,11 +101,11 @@ function cacheObjMethod(func) {
 }
 
 worker.slow = cacheObjMethod(worker.slow);
-console.log(worker.slow(1));
-console.log(worker.slow(1));
-console.log(worker.slow(1));
+// console.log(worker.slow(1));
+// console.log(worker.slow(1));
+// console.log(worker.slow(1));
 
-//Going multi-argument
+//Going MULTI-ARGUMENTS
 //Using hash function
 let worker2 = {
   slow(min, max) {
@@ -133,6 +134,47 @@ function hash(args) {
 }
 
 worker2.slow = cacheMultiArgs(worker2.slow, hash);
-console.log(worker2.slow(2, 3));
-console.log(worker2.slow(2, 3));
-console.log(worker2.slow(2, 3));
+// console.log(worker2.slow(2, 3));
+// console.log(worker2.slow(2, 3));
+// console.log(worker2.slow(2, 3));
+
+//FUNC.APPLY ==> more faster performance than func.call coz JS optimization
+//It takes an array-like object as parameter.
+//Syntax: func.apply(context, args)
+let wrapper = function () {
+  return func.apply(this, arguments);
+};
+
+let worker3 = {
+  slow(min, max) {
+    console.log(`Called with ${min},${max}`);
+    return min + max;
+  },
+};
+
+function cacheMultiArgs(func, hash) {
+  let cache = new Map();
+
+  return function () {
+    let key = hash(arguments);
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    let result = func.apply(this, arguments);
+    cache.set(key, result);
+    return result;
+  };
+}
+
+function hash(args) {
+  return args[0] + ', ' + args[1];
+}
+
+worker3.slow = cacheMultiArgs(worker3.slow, hash);
+console.log(worker3.slow(4, 6));
+console.log(worker3.slow(4, 6));
+console.log(worker3.slow(4, 6));
+console.log(worker3.slow(4, 6));
+console.log(worker3.slow(2, 3));
+console.log(worker3.slow(2, 3));
