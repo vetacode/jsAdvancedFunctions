@@ -157,6 +157,9 @@ function cacheMultiArgs(func, hash) {
 
   return function () {
     let key = hash(arguments);
+    // console.log(arguments);
+    // console.log(arguments == Array);
+    // console.log(typeof arguments);
     if (cache.has(key)) {
       return cache.get(key);
     }
@@ -178,3 +181,9 @@ console.log(worker3.slow(4, 6));
 console.log(worker3.slow(4, 6));
 console.log(worker3.slow(2, 3));
 console.log(worker3.slow(2, 3));
+
+//BORROWING METHOD
+function hash2() {
+  console.log([].join.call(arguments)); // 1, 2
+}
+hash2(1, 2);
