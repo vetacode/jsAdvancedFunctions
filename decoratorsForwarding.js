@@ -103,3 +103,34 @@ worker.slow = cacheObjMethod(worker.slow);
 console.log(worker.slow(1));
 console.log(worker.slow(1));
 console.log(worker.slow(1));
+
+//Going multi-argument
+//Using hash function
+let worker2 = {
+  slow(min, max) {
+    console.log(`Called with ${min},${max}`);
+    return min + max;
+  },
+};
+
+function cacheMultiArgs(func, hash) {
+  let cache = new Map();
+
+  return function () {
+    let key = hash(arguments);
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    let result = func(this, ...arguments);
+    cache.set(key, result);
+    return result;
+  };
+}
+
+function hash(args) {
+  return args[0] + ', ' + args[1];
+}
+
+worker2.slow = cacheMultiArgs(worker2.slow, hash);
+console.log(worker2.slow(2, 3));
