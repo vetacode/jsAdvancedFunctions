@@ -53,22 +53,53 @@ function decoratorCache(func) {
 }
 
 slow = decoratorCache(slow);
-console.log(slow('BOOK'));
-console.log(slow('BOOK'));
-console.log(slow('BOOK'));
-console.log(slow(2));
-console.log(slow(2));
-console.log(slow(3));
-console.log(slow(3));
+// console.log(slow('BOOK'));
+// console.log(slow('BOOK'));
+// console.log(slow('BOOK'));
+// console.log(slow(2));
+// console.log(slow(2));
+// console.log(slow(3));
+// console.log(slow(3));
 
 //Using “FUNC.CALL” for the context
 //This is i.e. for working with Object Methods
 //Syntax: func.call(context, arg1, arg2, …args)
 
 function sapa(kata) {
-  console.log(this.nama + ':' + kata);
+  console.log(this.nama + ': ' + kata);
+  return this.nama + ': ' + kata;
 }
 
 let cust = { nama: 'Budi' };
+// console.log(sapa.call(cust, 'Bilang Halo'));
 
-sapa.call(cust, 'Halo');
+//heavy work on Object methods, use this:
+let worker = {
+  someMethod() {
+    return 1;
+  },
+
+  slow(x) {
+    console.log('Called with ' + x);
+    return x * this.someMethod(); // (*)
+  },
+};
+
+function cacheObjMethod(func) {
+  let cache = new Map();
+
+  return function (x) {
+    // console.log(this === worker);
+    if (cache.has(x)) {
+      return cache.get(x);
+    }
+    let result = func.call(this, x); //the object call is using 'this' instead of hardcoding the obj name (worker), its due to flexibility of reusable function decorator
+    cache.set(x, result);
+    return result;
+  };
+}
+
+worker.slow = cacheObjMethod(worker.slow);
+console.log(worker.slow(1));
+console.log(worker.slow(1));
+console.log(worker.slow(1));
