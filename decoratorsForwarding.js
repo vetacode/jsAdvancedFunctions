@@ -58,4 +58,17 @@ console.log(slow('BOOK'));
 console.log(slow('BOOK'));
 console.log(slow(2));
 console.log(slow(2));
-// console.log(slow(3));
+console.log(slow(3));
+console.log(slow(3));
+
+//Using “FUNC.CALL” for the context
+//This is i.e. for working with Object Methods
+//Syntax: func.call(context, arg1, arg2, …args)
+
+function sapa(kata) {
+  console.log(this.nama + ':' + kata);
+}
+
+let cust = { nama: 'Budi' };
+
+sapa.call(cust, 'Halo');
