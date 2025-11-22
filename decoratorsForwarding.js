@@ -29,7 +29,7 @@ function cachingDecorator(func) {
 function slow(x) {
   //heavy CPU works function
   console.log(
-    `this ${x} has been proceed from scratch, just 1 ${x} printed result below, afterwards the ${x} returned was from cache`
+    `this ${x} has been proceed from scratch, just 1 ${x} printed result below, afterwards the ${x} returned from cache`
   );
   return x;
 }
@@ -43,19 +43,19 @@ function decoratorCache(func) {
       return cache.get(x); //Jika fungsi if ini true, maka akan lgsg return (dan exit) argumen x yg udah disimpan di cache sebelumnya, sehingga fungsi else (fungsi setelah ini) tidak akan dijalankan
     }
 
-    let result = func(x);
+    // let result = func(x);
     // console.log(result);
-    cache.set(x, result);
+    cache.set(x, func(x));
     // console.log(x);
     // console.log(result);
-    return result;
+    return func(x);
   };
 }
 
 slow = decoratorCache(slow);
-console.log(slow('SATU'));
-console.log(slow('SATU'));
-console.log(slow('SATU'));
+console.log(slow('BOOK'));
+console.log(slow('BOOK'));
+console.log(slow('BOOK'));
 console.log(slow(2));
 console.log(slow(2));
 // console.log(slow(3));
