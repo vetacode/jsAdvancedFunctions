@@ -6,5 +6,8 @@ let user = {
   },
 };
 
+setTimeout(user.sayHi, 1000); //Hello undefined
 user.sayHi();
-setTimeout(user.sayHi, 1000);
+
+//SOLUTION => using function wrapper
+setTimeout(() => user.sayHi(), 1000);
