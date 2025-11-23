@@ -53,7 +53,7 @@ for (let key in user) {
   }
 }
 
-//PRTIAL FUNCTIONS: functions has some part of parameters fixed
+//PARTIAL FUNCTIONS: functions has some part of parameters fixed
 //Binding arguments. SYNTAX: let bound = func.bind(context, [arg1], [arg2], ...);
 function kali(a, b) {
   return a * b;
@@ -63,3 +63,27 @@ let double = kali.bind(null, 2);
 console.log(double(3)); //6
 console.log(double(2)); //4
 console.log(double(1)); //2
+
+//Going partial without context
+function partial(func, ...argsBound) {
+  return function (...args) {
+    // (*)
+    return func.call(this, ...argsBound, ...args);
+  };
+}
+
+// Usage:
+let user3 = {
+  firstName: 'John',
+  say(time, phrase) {
+    console.log(`[${time}] ${this.firstName}: ${phrase}!`);
+  },
+};
+
+//Partial Method with fixed first argument (time)
+user3.sayNow = partial(
+  user3.say,
+  new Date().getHours() + ': ' + new Date().getMinutes()
+);
+
+user3.sayNow('Hello');
