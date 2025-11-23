@@ -27,3 +27,15 @@ function sayHey(phrase) {
 
 let boundFunc = sayHey.bind(cust);
 boundFunc('Hallo'); // Argument will go to the original function parameter sayHey()
+
+let user2 = {
+  name: 'Alice',
+  sayHi() {
+    console.log(`Hello, ${this.name}`); //Hello, Alice
+  },
+};
+
+let sayHi = user2.sayHi.bind(user2);
+sayHi();
+
+setTimeout(sayHi, 1000); //Hello, Alice (after 1sec)
