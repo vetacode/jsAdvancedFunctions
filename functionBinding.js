@@ -134,6 +134,63 @@ obj.binded();
 let extracted = obj.normal;
 extracted();
 
-// - karena arrow function tidak membuat this sendiri, diambil dari environment diluar object literal => window/global
-// - karena binded() memiliki bind sendiri dengan nama bound yang memiliki kedekatan environment lebih dekat dbanding obj name
-// - karena this hilang, tidak ada bind this
+/**
+ * 1. obj.arrow() → "Global"
+Arrow function tidak punya this, jadi mengambil dari lingkup luar (global).
+
+2. obj.normal() → "Obj"
+Method call → this = obj.
+
+3. obj.binded() → "Bound"
+Fungsi di-bind dengan { name: "Bound" }, sehingga this terkunci.
+
+4. extracted() → "Global" atau error (karena this jadi default binding)
+Function dipanggil tanpa objek → call-site tidak punya pemanggil.
+ */
+
+/**TASK 2
+ * function f() {
+  alert(this.name);
+}
+
+f = f.bind( {name: "John"} ).bind( {name: "Pete"} );
+
+f(); // John
+ */
+
+function f() {
+  console.log(this.name);
+}
+
+f = f.bind({ name: 'John' }).bind({ name: 'Pete' });
+f(); // John
+//The exotic bound function object returned by f.bind(...) remembers the context (and arguments if provided) only at creation time.
+// A function cannot be re-bound.
+
+/**TASK 3
+ * function sayHi() {
+  alert( this.name );
+}
+sayHi.test = 5;
+
+let bound = sayHi.bind({
+  name: "John"
+});
+
+alert( bound.test ); // what will be the output? why?
+ */
+
+function sayHi() {
+  console.log(this.name);
+}
+sayHi.test = 5;
+
+let bound = sayHi.bind({
+  name: 'John',
+});
+
+console.log(bound.test); // undefined
+//The result of bind is another object. It does not have the test property.
+
+
+/
