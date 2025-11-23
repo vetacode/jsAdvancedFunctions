@@ -45,3 +45,12 @@ user2 = {
   },
 };
 user2.sayHello();
+
+//BIND ALL => using for.. in
+for (let key in user) {
+  if (typeof user[key] == 'function') {
+    user[key] = user[key].bind(user);
+  }
+}
+
+//PRTIAL FUNCTIONS
