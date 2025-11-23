@@ -53,4 +53,13 @@ for (let key in user) {
   }
 }
 
-//PRTIAL FUNCTIONS
+//PRTIAL FUNCTIONS: functions has some part of parameters fixed
+//Binding arguments. SYNTAX: let bound = func.bind(context, [arg1], [arg2], ...);
+function kali(a, b) {
+  return a * b;
+}
+let double = kali.bind(null, 2);
+
+console.log(double(3)); //6
+console.log(double(2)); //4
+console.log(double(1)); //2
