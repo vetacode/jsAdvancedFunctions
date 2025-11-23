@@ -35,7 +35,13 @@ let user2 = {
   },
 };
 
-let sayHi = user2.sayHi.bind(user2);
-sayHi();
+let sayHello = user2.sayHi.bind(user2);
+sayHello();
 
-setTimeout(sayHi, 1000); //Hello, Alice (after 1sec)
+setTimeout(sayHello, 1000); //Hello, Alice (after 1sec)
+user2 = {
+  sayHello() {
+    console.log('Another user in setTimeout!');
+  },
+};
+user2.sayHello();
