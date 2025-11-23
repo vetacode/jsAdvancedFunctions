@@ -192,5 +192,53 @@ let bound = sayHi.bind({
 console.log(bound.test); // undefined
 //The result of bind is another object. It does not have the test property.
 
+/**TASK 4
+ * Fix a function that loses "this"
+importance: 5
+The call to askPassword() in the code below should check the password and then call user.loginOk/loginFail depending on the answer.
 
-/
+But it leads to an error. Why?
+
+Fix the highlighted line for everything to start working right (other lines are not to be changed).
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: 'John',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk, user.loginFail);//failed to log in (user name is undefined)
+ */
+
+function askPassword(ok, fail) {
+  let password = 1234;
+  if (password == 'rockstar') ok();
+  else fail();
+}
+
+let user4 = {
+  name: 'John',
+
+  loginOk() {
+    console.log(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    console.log(`${this.name} failed to log in`);
+  },
+};
+
+askPassword(user4.loginOk.bind(user), user4.loginFail.bind(user)); //Joni failed to log in
