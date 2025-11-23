@@ -242,3 +242,46 @@ let user4 = {
 };
 
 askPassword(user4.loginOk.bind(user), user4.loginFail.bind(user)); //Joni failed to log in
+
+/**TASK 5
+ * Partial application for login
+importance: 5
+The task is a little more complex variant of Fix a function that loses "this".
+
+The user object was modified. Now instead of two functions loginOk/loginFail, it has a single function user.login(true/false).
+
+What should we pass askPassword in the code below, so that it calls user.login(true) as ok and user.login(false) as fail?
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: 'John',
+
+  login(result) {
+    alert( this.name + (result ? ' logged in' : ' failed to log in') );
+  }
+};
+
+askPassword(?, ?); // ?
+Your changes should only modify the highlighted fragment.
+ */
+
+function askPassword(ok, fail) {
+  let password = 'rockstar';
+  if (password == 'rockstar') ok();
+  else fail();
+}
+
+let user5 = {
+  name: 'John',
+
+  login(result) {
+    console.log(this.name + (result ? ' logged in' : ' failed to log in'));
+  },
+};
+
+askPassword(user5.login.bind(user5, true), user5.login.bind(user5, false));
