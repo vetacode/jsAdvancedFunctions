@@ -96,10 +96,8 @@ let pengguna = {
   },
 };
 
-// let fn = pengguna.sayName.bind(pengguna);
-let fn = () => {
-  pengguna.sayName();
-};
+let fn = pengguna.sayName.bind(pengguna);
+// let fn = () => pengguna.sayName();
 fn();
 
 //Soal 2.
@@ -111,5 +109,31 @@ let counter = {
   },
 };
 
-let btn = document.querySelector('#btn');
-btn.addEventListener('click', counter.add);
+// let btn = document.querySelector('#btn');
+// btn.addEventListener('click', counter.add.bind(counter));
+
+//Soal 3.
+
+let name = 'Global';
+
+let obj = {
+  name: 'Obj',
+  arrow: () => console.log(this.name),
+  normal() {
+    console.log(this.name);
+  },
+  binded: function () {
+    console.log(this.name);
+  }.bind({ name: 'Bound' }),
+};
+
+obj.arrow();
+obj.normal();
+obj.binded();
+
+let extracted = obj.normal;
+extracted();
+
+// - karena arrow function tidak membuat this sendiri, diambil dari environment diluar object literal => window/global
+// - karena binded() memiliki bind sendiri dengan nama bound yang memiliki kedekatan environment lebih dekat dbanding obj name
+// - karena this hilang, tidak ada bind this
