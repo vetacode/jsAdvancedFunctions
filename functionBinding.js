@@ -87,3 +87,29 @@ user3.sayNow = partial(
 );
 
 user3.sayNow('Hello');
+
+//Soal 1. Karena assignment fn tidak mengikat context user sehingga kehilangan this
+let pengguna = {
+  name: 'Jeju',
+  sayName() {
+    console.log(this.name);
+  },
+};
+
+// let fn = pengguna.sayName.bind(pengguna);
+let fn = () => {
+  pengguna.sayName();
+};
+fn();
+
+//Soal 2.
+let counter = {
+  value: 0,
+  add() {
+    this.value++;
+    console.log(this.value);
+  },
+};
+
+let btn = document.querySelector('#btn');
+btn.addEventListener('click', counter.add);
