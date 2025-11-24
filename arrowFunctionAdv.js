@@ -5,7 +5,9 @@ let group = {
 
   showList() {
     this.students.forEach(
-      (student) => console.log(this.title + ': ' + student) //dont have this
+      function (student) {
+        console.log(this.title + ': ' + student);
+      } //dont have this
     );
   },
 };
