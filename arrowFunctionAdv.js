@@ -4,8 +4,8 @@ let group = {
   students: ['John', 'Pete', 'Alice'],
 
   showList() {
-    this.students.forEach((student) =>
-      console.log(this.title + ': ' + student)
+    this.students.forEach(
+      (student) => console.log(this.title + ': ' + student) //dont have this
     );
   },
 };
