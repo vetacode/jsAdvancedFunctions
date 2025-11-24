@@ -62,7 +62,7 @@ slow = decoratorCache(slow);
 // console.log(slow(3));
 
 //Using “FUNC.CALL” for the context
-//This expects a list of arguments
+//This expects a list of arguments, and return array-like
 //This is i.e. for working with Object Methods
 //Syntax: func.call(context, arg1, arg2, …args)
 
@@ -72,7 +72,7 @@ function sapa(kata) {
 }
 
 let cust = { nama: 'Budi' };
-// console.log(sapa.call(cust, 'Bilang Halo'));
+console.log(sapa.call(cust, 'Bilang Halo'));
 
 //heavy work on Object methods, use this:
 let worker = {
