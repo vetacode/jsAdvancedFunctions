@@ -36,13 +36,27 @@ group2.showList();
 
 function defer(f, ms) {
   return function () {
-    setTimeout(() => f.apply(this.arguments), ms);
+    setTimeout(() => f.apply(this, arguments), ms);
   };
 }
 
-function sayHi(who) {
-  console.log('Hello ' + who);
+function sayHi(who1, who2) {
+  console.log('Hello, ' + who1 + ' ' + who2);
 }
 
 let sayHiDefferred = defer(sayHi, 2000);
-sayHiDefferred('Angel');
+sayHiDefferred('Angel', 'Elgo');
+
+//Using spread ...args
+function delay(f, ms) {
+  return function (...args) {
+    setTimeout(() => f.call(this, ...args), ms);
+  };
+}
+
+function sayHello(name1, name2) {
+  console.log('Hai, ' + name1 + ', ' + name2);
+}
+
+let sayHelloDeffered = delay(sayHello, 1000);
+sayHelloDeffered('Tuti', 'Dudi');
