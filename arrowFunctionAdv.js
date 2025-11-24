@@ -78,4 +78,4 @@ function sayHello(name1, name2) {
 let sayHelloDeffered = delay(sayHello, 1000);
 sayHelloDeffered('Tuti', 'Dudi');
 
-//arrow functions are excellent for decorators: they naturally forward this and arguments.
+//THATS WHY arrow functions are excellent for decorators: they naturally forward this and arguments.
