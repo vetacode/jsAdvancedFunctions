@@ -29,7 +29,7 @@ function cachingDecorator(func) {
 function slow(x) {
   //heavy CPU works function
   console.log(
-    `this ${x} has been proceed from scratch, just 1 ${x} printed result below, afterwards the ${x} returned from cache`
+    `this ${x} has been proceed from scratch (just 1 ${x} printed result below), afterwards the ${x} returned is from cache`
   );
   return x;
 }
@@ -140,6 +140,7 @@ worker2.slow = cacheMultiArgs(worker2.slow, hash);
 
 //FUNC.APPLY ==> more faster performance than func.call coz JS optimization
 //It takes an array-like object as parameter.
+//It returtns array-like
 //TO FORWARD A CALL
 //Syntax: func.apply(context, args)
 let wrapper = function () {
@@ -268,10 +269,10 @@ function delay(f, ms) {
 }
 
 // let f1000 = delay(f, 1000);
-console.log(typeof f1000);
+// console.log(typeof f1000);
 let f1500 = delay(f, 1500);
 
-f1000('test'); // shows "test" after 1000ms
+// f1000('test'); // shows "test" after 1000ms
 f1500('test'); // shows "test" after 1500ms
 
 /**TASK 3
@@ -316,7 +317,7 @@ The task is to implement debounce decorator.
 Hint: that’s just a few lines if you think about it :)
  */
 
-let f = _.debounce(console.log(), 1000);
+// let f = _.debounce(console.log(), 1000);
 
 f('a');
 setTimeout(() => f('b'), 200);
